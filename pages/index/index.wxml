@@ -1,0 +1,159 @@
+
+<view class="container" style="width:{{windowWidth}}px;height:{{windowHeight+200}}px;">
+  <view class="button_box" wx:if="{{stack==1}}">
+    <view class="choosebtn" bindtap="draw" data-id="1" style="margin-top:100px;">一阶RC零输入相应</view>
+    <view class="choosebtn" bindtap="draw" data-id="2">一阶RC零状态响应</view>
+    <view class="choosebtn" bindtap="draw" data-id="3">一阶RC全响应</view>
+    <view class="choosebtn" bindtap="draw" data-id="4">一阶RL正弦激励响应</view>
+    <view class="choosebtn" bindtap="draw" data-id="7" style="margin-bottom:300px;">二阶电路全响应</view>
+  </view>
+  <view class="canvus_box" wx:if="{{stack==2}}">
+    <view class="navback" bindtap="navback">
+      <view class="backicon">back</view>
+      <view class="title" wx:if="{{currentid==1}}">一阶RC零输入响应</view>
+      <view class="title" wx:elif="{{currentid==2}}">一阶RC零状态响应</view>
+      <view class="title" wx:elif="{{currentid==3}}">一阶RC全响应</view>
+      <view class="title" wx:elif="{{currentid==4}}">一阶RL正弦激励响应</view>
+      <view class="title" wx:elif="{{currentid==7}}">二阶电路全响应</view>
+      <view class="balance"></view>
+    </view>
+    <view style="height:20px;"></view>
+    <view class="Tbox" wx:if="{{currentid==1||currentid==2||currentid==3||currentid==4}}">时间常数:{{T}}ms</view>
+    <view class="coordinateybox">
+      <view wx:if="{{currentid==7}}" class="coordinatey">/A x {{yval}}</view>
+      <view wx:else class="coordinatey">/V x {{yval}}</view>
+    </view>
+    <view class="box">
+      <view class="thebox">
+        <view class="y-line">
+          <view class="y-block" wx:for="{{5}}" wx:key>{{ynum*(5-index)}}</view>
+          <view class="y-block">0</view>
+          <view class="y-block" wx:for="{{4}}" wx:key>-{{ynum*(index+1)}}</view>
+        </view>
+        <canvas canvas-id="myCanvas"
+        style="height:300px;width:300px;background-color:rgb(233, 252, 255);margin-bottom:10px;"
+        bindtouchstart="start"
+        bindtouchmove="move"
+        bindtouchend="end"/>
+      </view>
+      <view class="x-box">
+        <view class="o-point">0</view>
+        <view class="x-line">
+          <view class="x-block" wx:for="{{10}}" wx:key>{{xnum*(index+1)/10}}</view>
+        </view>
+      </view>
+      <view class="coordinatexbox">
+        <view class="coordinatex">/ms x {{xval}}</view>
+      </view>
+      <view class="blank" style="height:20px;"></view>
+      <form bindsubmit="cal1">
+        <view class="form" style="height:90px;">
+          <view class="itemsbox" wx:if="{{currentid==1||currentid==2||currentid==3||currentid==7}}">
+            <view class="itemstext">电容</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="C" placeholder="{{C1}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox">
+            <view class="itemstext">电阻</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="R" placeholder="{{R1}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==1}}">
+            <view class="itemstext">零压初</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="U" placeholder="{{U1}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==2||currentid==3||currentid==4}}">
+            <view class="itemstext">电压源</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="Us" placeholder="{{Us}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==3}}">
+            <view class="itemstext">电压初</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="Un" placeholder="{{Un}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==4||currentid==7}}">
+            <view class="itemstext">电感</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="L1" placeholder="{{L1}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==4}}">
+            <view class="itemstext">角频率</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="w" placeholder="{{w}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==4}}">
+            <view class="itemstext">初相角</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="fanu" placeholder="{{fanu}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==7}}">
+            <view class="itemstext">电流源</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="Is" placeholder="{{Is}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==7}}">
+            <view class="itemstext">电压初</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="U0" placeholder="{{U0}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+          <view class="itemsbox" wx:if="{{currentid==7}}">
+            <view class="itemstext">电流初</view>
+            <view class="itemsinputbox">
+              <input class="itemsinput" name="I0" placeholder="{{I0}}" placeholder-style="color:rgb(0, 162, 255)"></input>
+            </view>
+          </view>
+        </view>
+        <button class="subbtn" form-type="submit">确 认</button>
+      </form>
+    </view>
+    <view class="box" wx:if="{{currentid==2}}">
+    </view>
+    <view class="box" wx:if="{{currentid==3}}">
+    </view>
+    <view class="box" wx:if="{{currentid==4}}">
+    </view>
+    <view class="box" wx:if="{{currentid==5}}">
+    </view>
+    <view class="box" wx:if="{{currentid==6}}">
+    </view>
+    <view class="box" wx:if="{{currentid==7}}">
+    </view>
+    <!--<view hidden="{{hidden}}">
+      Coordinates: ({{x}}, {{y}})
+    </view>!-->
+    <!--
+    <view class="buttonbox">
+        <view class="changetitle">改变x轴坐标间隔 X</view>
+        <view class="changebtn" data-num="2" data-id="x" bindtap="multibleit">2</view>
+        <view class="changebtn" data-num="5" data-id="x" bindtap="multibleit">5</view>
+        <view class="changebtn" data-num="10" data-id="x" bindtap="multibleit">10</view>
+        <view class="changebtn" data-num="100" data-id="x" bindtap="multibleit">100</view>
+        <view class="changebtn" data-num="0.5" data-id="x" bindtap="multibleit">0.5</view>
+        <view class="changebtn" data-num="0.2" data-id="x" bindtap="multibleit">0.2</view>
+        <view class="changebtn" data-num="0.1" data-id="x" bindtap="multibleit">0.1</view>
+        <view class="changebtn" data-num="0.01" data-id="x" bindtap="multibleit">0.01</view>
+        <view class="changetitle">改变y轴坐标间隔 X</view>
+        <view class="changebtn" data-num="2" data-id="y" bindtap="multibleit">2</view>
+        <view class="changebtn" data-num="5" data-id="y" bindtap="multibleit">5</view>
+        <view class="changebtn" data-num="10" data-id="y" bindtap="multibleit">10</view>
+        <view class="changebtn" data-num="100" data-id="y" bindtap="multibleit">100</view>
+        <view class="changebtn" data-num="0.5" data-id="y" bindtap="multibleit">0.5</view>
+        <view class="changebtn" data-num="0.2" data-id="y" bindtap="multibleit">0.2</view>
+        <view class="changebtn" data-num="0.1" data-id="y" bindtap="multibleit">0.1</view>
+        <view class="changebtn" data-num="0.01" data-id="y" bindtap="multibleit">0.01</view>
+      </view>
+      !-->
+  </view>
+</view>

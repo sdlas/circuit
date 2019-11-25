@@ -1,0 +1,246 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  box-sizing: border-box;
+  background-color:rgb(167, 255, 255);
+} 
+.choosebtn{
+  height:40px;
+  width:160px;
+  margin-top:20px;
+  background-color:rgb(0, 162, 255);
+  font-size:15px;
+  line-height:40px;
+  text-align:center;
+  color:aquamarine;
+  border-radius:5px;
+}
+.canvus_box{
+  width:100%;
+}
+.Tbox{
+  height:20px;
+  width:100%;
+  font-size:10px;
+  text-align:center;
+  line-height:20px;
+  color:aquamarine;
+  background-color:rgb(0, 162, 255);
+}
+.coordinateybox{
+  height: 20px;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.coordinatey{
+  height:20px;
+  width:100%;
+  background-color:rgb(0, 162, 255);
+  color:aquamarine;
+  font-size:10px;
+  line-height: 20px;
+  text-align:left;
+}
+.coordinatexbox{
+  height:20px;
+  width:100%;
+}
+.coordinatex{
+  padding-right:10px;
+  float:right;
+  height:20px;
+  width:100%;
+  font-size:10px;
+  color:aquamarine;
+  background-color:rgb(255, 100, 126);
+  text-align: right;
+  line-height:20px;
+  border-top:1px solid aquamarine;
+}
+.box{
+  display: flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+}
+.thebox{
+  margin-left:20px;
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  flex-wrap:wrap;
+  height:300px;
+  width:340px;
+}
+.y-line{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height:300px;
+  width:40px;
+  background-color:rgb(0, 162, 255);
+}
+.y-block{
+  padding-top:2px;
+  font-size:10px;
+  color:aquamarine;
+  line-height:10px;
+  text-align:left;
+  width:40px;
+  height:30px;
+  border-top-style: solid;
+  border-width: 1px;
+  border-color: aquamarine;
+  }
+.x-box{
+  margin-left:20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width:340px;
+  height:20px;
+}
+.o-point{
+  width:40px;
+  height:20px;
+  background-color:blueviolet;
+  font-size: 10px;
+  color:aquamarine;
+  line-height:20px;
+  text-align: center;
+}
+.x-line{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+  height:20px;
+  width:300px;
+  background-color:rgb(255, 100, 126);
+}
+.x-block{
+  font-size:10px;
+  text-align:right;
+  padding-right:2px;
+  line-height:20px;
+  width:30px;
+  height:20px;
+  border-right-style:solid;
+  border-width:1px;
+  color:aquamarine;
+}
+.buttonbox{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items:flex-start;
+  flex-wrap: wrap;
+  width:100%;
+  height:100px;
+}
+.changetitle{
+  height:20px;
+  width:100%;
+  text-align:left;
+  margin-left:10px;
+  line-height:20px;
+  font-size:13px;
+}
+.changebtn{
+  margin-top:1px;
+  margin-left:2.222%;
+  width:10%;
+  background-color:rgb(0, 162, 255);
+  height:30px;
+  font-size:15px;
+  line-height:30px;
+  text-align:center;
+  border-radius:2px;
+  color:aquamarine;
+}
+.form{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  flex-wrap:wrap;
+  width:100%;
+  background-color:rgb(0, 162, 255);
+}
+.itemsbox{
+  height:30px;
+  width:50%;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.itemstext{
+  height:30px;
+  width:30%;
+  line-height:30px;
+  font-size:13px;
+  text-align:right;
+  padding-right:3px;
+  color:aquamarine;
+}
+.itemsinputbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  height:30px;
+  width:70%;
+}
+.itemsinput{
+  height:20px;
+  width:80%;
+  background-color:rgb(149, 216, 255);
+  font-size:13px;
+  text-align:center;
+  line-height:20px;
+  color:rgb(0, 162, 255);
+  border-radius:2px;
+}
+.subbtn{
+  margin-top:12px;
+  height:30px;
+  width:60px;
+  font-size:15px;
+  background-color:rgb(0, 162, 255);
+  line-height: 25px;
+  text-align: center;
+  color:aquamarine;
+  box-shadow:rgb(0, 162, 255) 0rpx 0rpx 15rpx 0rpx;
+}
+.navback{
+  width:100%;
+  height:60px;
+  background-color:rgb(0, 162, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.backicon{
+  height:60px;
+  width:60px;
+  font-size:20px;
+  color:aquamarine;
+  line-height:60px;
+  padding-left:10px;
+}
+.title{
+  height:60px;
+  width:150px;
+  font-size:15px;
+  color:aquamarine;
+  line-height:60px;
+  text-align:center;
+}
+.balance{
+  height:60px;
+  width:60px;
+}
